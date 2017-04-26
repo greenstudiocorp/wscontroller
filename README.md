@@ -36,16 +36,10 @@ Call-back delegate:
 
 @synthesize dataQueryController = _dataQueryController;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.dataQueryController = [DataQueryBuilder getFilmDetailsWithId:@"123"
                                                              delegate:self];
-}
-
-- (void)didReceiveMemoryWarning{
-    
 }
 
 - (void)didReceivedResponse:(WSResponse*) response {

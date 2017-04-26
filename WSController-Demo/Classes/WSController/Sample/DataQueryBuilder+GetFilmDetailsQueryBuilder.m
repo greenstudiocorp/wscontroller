@@ -26,8 +26,8 @@
     DataQueryBuilder *dataQueryBuilder = [DataQueryBuilder newBuilder];
     
     [dataQueryBuilder setWebserviceMethod:GET_FILM_DETAIL_METHOD];
-    [dataQueryBuilder setGetParameter:@"param01=value01&param02=value02"];
-    [dataQueryBuilder setPostParameter:@"post_param01=post_value01&post_param02=post_value02"];
+    //[dataQueryBuilder setGetParameter:@"param01=value01&param02=value02"];
+    //[dataQueryBuilder setPostParameter:@"post_param01=post_value01&post_param02=post_value02"];
     [dataQueryBuilder setJsonParser:defaultJSONParser];
     [dataQueryBuilder setCacheLoader:[[FilmLoader alloc] initWithFilmId:filmId]];
     [dataQueryBuilder setDataCaching:[[FilmCaching alloc] init]];
