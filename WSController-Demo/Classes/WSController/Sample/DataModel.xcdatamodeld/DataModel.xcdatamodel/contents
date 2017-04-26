@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="11G63" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Box" representedClassName="Box" syncable="YES">
+        <attribute name="boxDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="days" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="iconName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastFinish" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="shortTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contains" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="placedInBox" inverseEntity="Word" syncable="YES"/>
+    </entity>
+    <entity name="LearningLog" representedClassName="LearningLog" syncable="YES">
+        <attribute name="dateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="learningDuration" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Word" representedClassName="Word" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="meaning" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pronounce" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="word" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="placedInBox" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Box" inverseName="contains" inverseEntity="Box" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Box" positionX="-3645" positionY="-2733" width="128" height="150"/>
+        <element name="LearningLog" positionX="-4158" positionY="-2556" width="128" height="75"/>
+        <element name="Word" positionX="-4160" positionY="-2703" width="128" height="120"/>
+    </elements>
+</model>
