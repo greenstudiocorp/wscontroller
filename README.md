@@ -9,8 +9,10 @@ Webservice Controller uses JObjectMapper, AFNetworking 2.x
 
 # How to use WSController
 
+Call webservice:
 
-```DataQueryController *dataQueryController;
+```objective-c
+DataQueryController *dataQueryController;
     
 DefaultJSONParser *defaultJSONParser = [[DefaultJSONParser alloc] initDefaultJSONParserWithEntityClass:Film.class mapping:[Film mapping]];
   
@@ -24,4 +26,32 @@ DataQueryBuilder *dataQueryBuilder = [DataQueryBuilder newBuilder];
 [dataQueryBuilder setDataCaching:[[FilmCaching alloc] init]];
 [dataQueryBuilder setWsControllerDelegate:delegate];
 
-return dataQueryController = [dataQueryBuilder buildDataQuery];```
+return dataQueryController = [dataQueryBuilder buildDataQuery];
+```
+
+Call-back delegate:
+
+```objective-c
+@implementation RootViewController
+
+@synthesize dataQueryController = _dataQueryController;
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.dataQueryController = [DataQueryBuilder getFilmDetailsWithId:@"123"
+                                                             delegate:self];
+}
+
+- (void)didReceiveMemoryWarning{
+    
+}
+
+- (void)didReceivedResponse:(WSResponse*) response {
+    NSLog(@"Response: %@", response);
+}
+
+@end
+```
+
