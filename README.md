@@ -5,11 +5,12 @@ Webservice Controller uses JObjectMapper, AFNetworking 2.x
 # Features
 
 1. Support RESTful (PUT POST GET DELETE) webservice with core data caching.
-2. Object Mapping using dictionary with JObjectMapper library
+2. Support object mapping using NSDictionary through JObjectMapper library.
+3. Support caching with core data & auto loader.
 
 # How to use WSController
 
-Entity class:
+## Step 01: Define Entity Class
 
 ```objective-c
 @implementation Film
@@ -39,7 +40,7 @@ Entity class:
 }
 ```
 
-Call webservice:
+## Step 2: Create DataQueryController
 
 ```objective-c
 DataQueryController *dataQueryController;
@@ -56,10 +57,10 @@ DataQueryBuilder *dataQueryBuilder = [DataQueryBuilder newBuilder];
 [dataQueryBuilder setDataCaching:[[FilmCaching alloc] init]];
 [dataQueryBuilder setWsControllerDelegate:delegate];
 
-return dataQueryController = [dataQueryBuilder buildDataQuery];
+dataQueryController = [dataQueryBuilder buildDataQuery];
 ```
 
-Call-back delegate:
+## Step 03: Define a Call-back delegate:
 
 ```objective-c
 @implementation RootViewController
@@ -79,7 +80,7 @@ Call-back delegate:
 @end
 ```
 
-Console log:
+## Console log output:
 
 ```
 WSController-Demo[3572:186560] Start data caching
