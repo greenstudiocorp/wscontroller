@@ -9,6 +9,36 @@ Webservice Controller uses JObjectMapper, AFNetworking 2.x
 
 # How to use WSController
 
+Entity class:
+
+```objective-c
+@implementation Film
+
+@synthesize filmName            =   _filmName;
+@synthesize filmDescription     =   _filmDescription;
+@synthesize actor               =   _actor;
+
++ (Film*)filmFormCDFilm:(CDFilm*) cdFilm{
+    if (!cdFilm) {
+        return nil;
+    }
+    Film *film = [[Film alloc] init];
+    film.filmId = cdFilm.filmId;
+    film.filmName = cdFilm.filmName;
+    film.filmDescription = cdFilm.filmDescription;
+    return film;
+}
+
++ (NSDictionary*)mapping{
+    NSDictionary *mapping = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"filmId", @"film_id",
+                             @"filmName", @"film_name",
+                             @"filmDescription", @"description",
+                             nil];
+    return mapping;
+}
+```
+
 Call webservice:
 
 ```objective-c
@@ -47,5 +77,16 @@ Call-back delegate:
 }
 
 @end
+```
+
+Console log:
+
+```
+WSController-Demo[3572:186560] Start data caching
+WSController-Demo[3572:186560] Start cache loading
+WSController-Demo[3572:186577] Start webservice
+WSController-Demo[3572:186583] Save successfully
+WSController-Demo[3572:186484] Response: Cache loaded: {"123","(Cached data) Film name 01","(Cached data) Description 01"}
+WSController-Demo[3572:186484] Response: Fresh data loaded: {"1","Film name 1","Description 1"}
 ```
 
